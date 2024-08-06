@@ -1,0 +1,6 @@
+services:
+  api:
+    build:
+      context: ./nest-deploy
+    ports:
+      - "4000:4000"
