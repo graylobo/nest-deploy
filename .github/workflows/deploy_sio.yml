@@ -11,11 +11,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Use secret in a script
-        run: | 
-            echo "My DEPLOY_APP_PEM_KEY is ${{ secrets.DEPLOY_APP_PEM_KEY }}"
-            echo "My BASTION_PEM_KEY is ${{ secrets.BASTION_PEM_KEY }}"
-
       - name: Install SSH Client
         run: sudo apt-get install -y openssh-client
 
@@ -37,9 +32,9 @@ jobs:
             echo GIT PULL REBASE...&&
             cd ..
             echo MOVE TO SRC DIR...&&
-            docker-compose build api &&
+            sudo docker-compose build api &&
             echo DOCKER COMPOSE BUILD...&&
-            docker-compose down &&
+            sudo docker-compose down &&
             echo DOCKER COMPOSE DOWN...&&
-            docker-compose up -d &&
+            sudo docker-compose up -d &&
             echo DEPLOY ON DEV DONE SUCCESSFULLY...
