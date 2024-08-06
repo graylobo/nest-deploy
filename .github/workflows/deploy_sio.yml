@@ -30,7 +30,7 @@ jobs:
             echo MOVE TO NEST DEPLOY DIR...&&
             git pull --rebase &&
             echo GIT PULL REBASE...&&
-            docker compose build api &&
+            docker-compose build api &&
             echo DOCKER COMPOSE BUILD...&&
             docker-compose down &&
             echo DOCKER COMPOSE DOWN...&&
