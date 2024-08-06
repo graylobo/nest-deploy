@@ -27,7 +27,7 @@ jobs:
           script: |
             cd ~/src/nest-deploy/ &&
             git pull --rebase &&
-            npm install &&
-            npm run build &&
-            pm2 restart nest-deploy &&
+            docker compose build api &&
+            docker-compose down &&
+            docker-compose up -d &&
             echo DEPLOY ON DEV DONE SUCCESSFULLY...
