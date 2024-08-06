@@ -25,9 +25,14 @@ jobs:
           proxy_username: ${{ secrets.BASTION_USERNAME }}
           proxy_key: ${{ secrets.BASTION_PEM_KEY }}
           script: |
+            echo DEPLOY ON DEV START...&&
             cd ~/src/nest-deploy/ &&
+            echo MOVE TO NEST DEPLOY DIR...&&
             git pull --rebase &&
+            echo GIT PULL REBASE...&&
             docker compose build api &&
+            echo DOCKER COMPOSE BUILD...&&
             docker-compose down &&
+            echo DOCKER COMPOSE DOWN...&&
             docker-compose up -d &&
             echo DEPLOY ON DEV DONE SUCCESSFULLY...
