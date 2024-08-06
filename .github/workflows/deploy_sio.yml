@@ -29,6 +29,8 @@ jobs:
             cd ~/src/nest-deploy/ &&
             echo MOVE TO NEST DEPLOY DIR...&&
             git pull --rebase &&
+            cd ..
+            echo MOVE TO SRC DIR...&&
             echo GIT PULL REBASE...&&
             docker-compose build api &&
             echo DOCKER COMPOSE BUILD...&&
