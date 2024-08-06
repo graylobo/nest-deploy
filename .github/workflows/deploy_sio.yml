@@ -11,6 +11,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Use secret in a script
+        run: | 
+            echo "My DEPLOY_APP_PEM_KEY is ${{ secrets.DEPLOY_APP_PEM_KEY }}"
+            echo "My BASTION_PEM_KEY is ${{ secrets.BASTION_PEM_KEY }}"
+
       - name: Install SSH Client
         run: sudo apt-get install -y openssh-client
 
@@ -29,9 +34,9 @@ jobs:
             cd ~/src/nest-deploy/ &&
             echo MOVE TO NEST DEPLOY DIR...&&
             git pull --rebase &&
+            echo GIT PULL REBASE...&&
             cd ..
             echo MOVE TO SRC DIR...&&
-            echo GIT PULL REBASE...&&
             docker-compose build api &&
             echo DOCKER COMPOSE BUILD...&&
             docker-compose down &&
